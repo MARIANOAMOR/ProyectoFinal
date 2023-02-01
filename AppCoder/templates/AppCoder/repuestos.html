@@ -1,0 +1,42 @@
+{% extends "AppCoder/plantilla.html"%}
+
+{% load static %}
+
+{% block contenidoQueCambia %}
+    
+   <h1>Listado de Repuestos</h1>
+   <div class="table-responsive py-2">
+       <table class="table table-striped">
+           <thead>
+               <tr>
+                   <th>Codigo</th>
+                   <th>Nnumero de parte</th>
+                   <th>Descripcion</th>
+                   <th>Precio de costo</th>
+                   <th>Stock</th>
+                   <th>Proveedor</th>
+                   <th>Observaciones</th>
+               </tr>
+           </thead>
+           <tbody>
+               {% for c in repuesto %}
+               <tr>
+                   <td>{{c.codigo}}</td>
+                   <td>{{c.numero_de_parte}}</td>
+                   <td>{{c.descripcion}}</td>
+                   <td>{{c.precio_de_costo}}</td>
+                   <td>{{c.stock}}</td>
+                   <td>{{c.proveedor}}</td>
+                   <td>{{c.observaciones}}</td>          
+                                 
+                   <td><a href="{% url 'editarRepuesto' c.codigo %}" class="btn btn-info">Editar</a></td>
+                   <td><a href="{% url 'eliminarRepuesto' c.codigo %}" class="btn btn-danger btnEliminacion">Eliminar</a></td>
+               </tr>
+               {% endfor %}
+               
+           </tbody>
+       </table>
+
+   </div>
+
+{% endblock %}

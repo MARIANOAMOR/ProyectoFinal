@@ -1,0 +1,48 @@
+{% extends "./padre.html" %}
+
+{% block title %} Gestión de Repuestos {% endblock %}
+
+{% block contenidoQueCambia %}
+<div class="row">
+    <div class="col-md-4 offset-md-4">
+        <h2>Edición de Repuestos</h2>
+        <div class="card">
+            <div class="card-body">
+                <form action="/AppCoder/editarRepuesto/" method="POST">{% csrf_token %}
+                    <div class="form-group">
+                        <input type="text" id="txtCodigo" name="txtCodigo" value="{{repuesto.codigo}}" class="form-control" placeholder="Código"
+                            minlength="6" maxlength="6" readonly required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="txtNumero_de_parte" name="txtNumero_de_parte" value="{{repuesto.numero_de_parte}}" class="form-control" placeholder="Numero_de_parte"
+                            maxlength="50" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="txtDescripcion" name="txtDescripcion" value="{{repuesto.descripcion}}" class="form-control" placeholder="Descripcion"
+                            maxlength="50" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="txtPrecio_de_costo" name="txtPrecio_de_costo" value="{{repuesto.precio_de_costo}}" class="form-control" placeholder="Precio_de_costo"
+                            maxlength="50" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="txtStock" name="txtStock" value="{{repuesto.stock}}" class="form-control" placeholder="Stock"
+                            maxlength="50" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="txtProveedor" name="txtProveedor" value="{{repuesto.proveedor}}" class="form-control" placeholder="Proveedor"
+                            maxlength="50" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="txtObservaciones" name="txtObservaciones" value="{{repuesto.observaciones}}" class="form-control" placeholder="Observaciones"
+                            maxlength="50" required>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-success btn-block text-white">Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

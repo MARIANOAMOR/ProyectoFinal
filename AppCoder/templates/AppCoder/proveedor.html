@@ -1,0 +1,41 @@
+{% extends "AppCoder/plantilla.html"%}
+
+{% load static %}
+
+{% block contenidoQueCambia %}
+    
+   <h1>Listado de Proveedores</h1>
+        <div class="table-responsive py-2">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Codigo</th>
+                        <th>Nombre</th>
+                        <th>Telefono</th>
+                        <th>Email</th>
+                        <th>Direccion</th>
+                        <th>Observaciones</th>
+                        <!-- <th colspan="2">Opciones</th> -->
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for c in proveedor %}
+                    <tr>
+                        <td>{{c.codigo}}</td>
+                        <td>{{c.nombre}}</td>
+                        <td>{{c.telefono}}</td>
+                        <td>{{c.email}}</td>
+                        <td>{{c.direccion}}</td>
+                        <td>{{c.observaciones}}</td>          
+                                      
+                        <td><a href="{% url 'editarProveedor' c.codigo %}" class="btn btn-info">Editar</a></td>
+                        <td><a href="{% url 'eliminarProveedor' c.codigo %}" class="btn btn-danger btnEliminacion">Eliminar</a></td>
+                    </tr>
+                    {% endfor %}
+                    
+                </tbody>
+            </table>
+
+        </div>
+
+{% endblock %}
